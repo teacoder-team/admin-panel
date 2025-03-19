@@ -1,5 +1,3 @@
-import { Label } from './label'
-import { cn } from '@/lib/utils'
 import type * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
 import {
@@ -19,6 +17,10 @@ import {
 	FormProvider,
 	useFormContext
 } from 'react-hook-form'
+
+import { cn } from '@/lib/utils/tailwind-merge'
+
+import { Label } from './label'
 
 const Form = FormProvider
 
@@ -127,6 +129,7 @@ const FormControl = forwardRef<
 					? `${formDescriptionId}`
 					: `${formDescriptionId} ${formMessageId}`
 			}
+			className='mt-1'
 			aria-invalid={!!error}
 			{...props}
 		/>

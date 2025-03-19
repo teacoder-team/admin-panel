@@ -1,12 +1,13 @@
-import '@/assets/styles/tailwind.css'
+import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
 import type { ReactNode } from 'react'
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin']
-})
+import { TanstackQueryProvider } from '@/components/providers/tanstack-query-provider'
+import { Toaster } from '@/components/shared/sonner'
+
+import { cn } from '@/lib/utils'
+
+import '@/assets/styles/tailwind.css'
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -24,7 +25,26 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru' suppressHydrationWarning>
-			<body className={geistSans.className}>{children}</body>
+			<body
+				className={cn(
+					'min-h-screen font-sans antialiased',
+					GeistSans.className
+				)}
+			>
+				<TanstackQueryProvider>
+					{children}
+					<Toaster
+						toastOptions={{
+							classNames: {
+								error: 'bg-red-100 text-red-800',
+								success: 'bg-emerald-100 text-emerald-800',
+								warning: 'bg-yellow-100 text-yellow-800',
+								info: 'bg-sky-100 text-sky-800'
+							}
+						}}
+					/>
+				</TanstackQueryProvider>
+			</body>
 		</html>
 	)
 }

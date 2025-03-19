@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils'
 import { type HTMLAttributes, forwardRef } from 'react'
+
+import { cn } from '@/lib/utils/tailwind-merge'
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 	({ className, ...props }, ref) => (
@@ -31,7 +32,7 @@ const CardTitle = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 		<div
 			ref={ref}
 			className={cn(
-				'text-2xl leading-none font-semibold tracking-wider',
+				'text-2xl leading-none font-semibold tracking-normal',
 				className
 			)}
 			{...props}

@@ -6,6 +6,20 @@
 	"jsxSingleQuote": true,
 	"singleQuote": true,
 	"arrowParens": "avoid",
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"^@/api/(.*)$",
+		"^@/app/(.*)$",
+		"^@/components/(.*)$",
+		"^@/constants/(.*)$",
+		"^@/generated/(.*)$",
+		"^@/hooks/(.*)$",
+		"^@/lib/(.*)$",
+		"^@/server/(.*)$",
+		"^@/styles/(.*)$",
+		"^../(.*)$",
+		"^./(.*)$"
+	],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true,
 	"plugins": [
