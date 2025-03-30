@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 import { TanstackQueryProvider } from '@/components/providers/tanstack-query-provider'
+import { ThemeProvider } from '@/components/providers/theme-provider'
 import { Toaster } from '@/components/shared/sonner'
 
 import { cn } from '@/lib/utils'
@@ -32,17 +33,26 @@ export default function RootLayout({
 				)}
 			>
 				<TanstackQueryProvider>
-					{children}
-					<Toaster
-						toastOptions={{
-							classNames: {
-								error: 'bg-red-100 text-red-800',
-								success: 'bg-emerald-100 text-emerald-800',
-								warning: 'bg-yellow-100 text-yellow-800',
-								info: 'bg-sky-100 text-sky-800'
-							}
-						}}
-					/>
+					<ThemeProvider
+						attribute='class'
+						defaultTheme='system'
+						enableSystem
+						disableTransitionOnChange
+					>
+						{children}
+						<Toaster
+							toastOptions={{
+								classNames: {
+									error: 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-200 border-0',
+									success:
+										'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200 border-0',
+									warning:
+										'bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-200 border-0',
+									info: 'bg-sky-100 text-sky-800 dark:bg-gray-800 dark:text-gray-200 border-0'
+								}
+							}}
+						/>
+					</ThemeProvider>
 				</TanstackQueryProvider>
 			</body>
 		</html>
